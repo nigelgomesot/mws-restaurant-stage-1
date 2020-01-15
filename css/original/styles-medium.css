@@ -15,7 +15,3 @@
   position: relative;
   margin: 0 20px 20px 0;
 }
-
-#breadcrumb {
-  width: calc(50% - 80px);
-}
