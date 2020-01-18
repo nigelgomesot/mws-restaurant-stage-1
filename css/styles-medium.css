@@ -28,3 +28,13 @@
   top: 80px;
   width: 50%;
 }
+
+#restaurant-container, #reviews-container {
+  width: 50%;
+}
+
+inside #footer {
+  bottom: 0;
+  position: absolute;
+  width: 50%;
+}
