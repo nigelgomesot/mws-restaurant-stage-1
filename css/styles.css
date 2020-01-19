@@ -267,3 +267,11 @@ nav h1 a {
 #restaurant-hours td {
   color: #666;
 }
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
