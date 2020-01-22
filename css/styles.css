@@ -195,6 +195,7 @@ nav h1 a {
   height: 400px;
   top: 115px;
   width: 100%;
+  z-index: 999;
 }
 .inside #map {
   background-color: #ccc;
@@ -275,10 +276,17 @@ nav h1 a {
   text-align: right;
   margin: 0;
   margin-left: -1px;
-  width: 50%;
+  width: calc(60% - 40px);
 }
+
+#reviews-list li p.name, p.date {
+  background-color: #f58500;
+  color: #fff;
+}
+
 #reviews-list li p.rating {
-  margin: 0 0 0 20px;
+  margin: 12px 0 12px 20px;
+  font-size: 1.2em;
 }
 #reviews-list li p.comments {
   margin: 12px 20px;
