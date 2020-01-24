@@ -30,7 +30,11 @@
 }
 
 #restaurant-container, #reviews-container {
-  width: 50%;
+  width: calc(50% - 40px);
+}
+
+#reviews-list {
+  padding-right: 40px;
 }
 
 inside #footer {
