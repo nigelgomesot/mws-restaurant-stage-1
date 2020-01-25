@@ -38,6 +38,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 #maincontent {
   background-color: #f3f3f3;
   min-height: 100%;
+  margin-top: 100vw;
 }
 #footer {
   background-color: #444;
@@ -191,11 +192,11 @@ nav h1 a {
 }
 .inside #map-container {
   background: blue none repeat scroll 0 0;
-  position: relative;
-  height: 400px;
-  top: 115px;
+  position: fixed;
+  height: 100vw;
+  top: 110px;
   width: 100%;
-  z-index: 999;
+  z-index: -1;
 }
 .inside #map {
   background-color: #ccc;
@@ -235,7 +236,7 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
+  padding: 0 40px 30px;
 }
 #reviews-container {
   padding: 30px 40px 80px;
