@@ -1,9 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
 
-#maincontent {
+.inside #maincontent {
  width: 50%;
- margin-top: 14vw;
+ margin-top: 110px;
 }
 
 #restaurants-list {
@@ -32,7 +32,7 @@
   right: 0;
   top: 60px;
   width: 50%;
-  z-index: unset;
+  z-index: initial;
 }
 
 #restaurant-container {
