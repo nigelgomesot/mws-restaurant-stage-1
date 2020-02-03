@@ -66,6 +66,14 @@ nav h1 a {
   letter-spacing: 10px;
   text-transform: uppercase;
 }
+
+nav h1 a:hover,
+nav h1 a:focus
+ {
+  color: #fff;
+  border-color: yellow;
+}
+
 #breadcrumb {
     padding: 10px 40px 16px;
     list-style: none;
@@ -129,6 +137,11 @@ nav h1 a {
   max-width: 200px;
 }
 
+.filter-options select:hover,
+.filter-options select:focus {
+  background-color: red;
+}
+
 /* ====================== Restaurant Listing ====================== */
 #restaurants-list {
   background-color: #f3f3f3;
@@ -180,6 +193,11 @@ nav h1 a {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+#restaurants-list li a:hover,
+#restaurants-list li a:focus {
+  background-color: red;
 }
 
 .inside #map-container {
