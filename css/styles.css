@@ -321,3 +321,16 @@ nav h1 a:focus
 #reviews-list li p.comments {
   margin: 12px 20px;
 }
+
+.skip-link {
+  display: block;
+  position: absolute;
+  top: 15px;
+  left: -1000px;
+  background-color: white;
+  padding: 5px 10px;
+}
+
+.skip-link:focus {
+  left: 15px;
+}
