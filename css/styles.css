@@ -334,3 +334,9 @@ nav h1 a:focus
 .skip-link:focus {
   left: 15px;
 }
+
+#footer a:focus,
+#footer a:hover {
+  color: orange;
+  text-decoration: underline;
+}
