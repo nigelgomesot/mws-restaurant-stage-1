@@ -4,3 +4,4 @@ https://alexandroperez.github.io/mws-walkthrough/?1.17.making-sure-app-is-respon
 https://alexandroperez.github.io/mws-walkthrough/?1.19.implementing-focus-and-skip-links
   - restaurant-info focus
   - footer focus
+https://alexandroperez.github.io/mws-walkthrough/?1.23.registering-service-worker-and-caching-static-assets
