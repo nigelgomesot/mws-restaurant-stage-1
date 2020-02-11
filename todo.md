@@ -7,3 +7,4 @@ https://alexandroperez.github.io/mws-walkthrough/?1.19.implementing-focus-and-sk
 https://alexandroperez.github.io/mws-walkthrough/?1.23.registering-service-worker-and-caching-static-assets
   - activate step
 https://alexandroperez.github.io/mws-walkthrough/?1.25.fixing-offline-mode
+https://alexandroperez.github.io/mws-walkthrough/?1.26.service-worker-restaurant-requests-with-parameters
