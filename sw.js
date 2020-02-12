@@ -42,6 +42,14 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+	const requestUrl = new URL(event.request.url);
+
+	if (requestUrl.origin === location.origin) {
+		const restaurant_path = '/restaurant.html';
+		if (requestUrl.pathname.startsWith(restaurant_path)) {
+			return event.respondWith(caches.match(restaurant_path));
+		}
+	}
 
 	event.respondWith(
 		caches.match(event.request).then(function(response) {
