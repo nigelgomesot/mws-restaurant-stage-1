@@ -9,3 +9,4 @@ https://alexandroperez.github.io/mws-walkthrough/?1.23.registering-service-worke
 https://alexandroperez.github.io/mws-walkthrough/?1.25.fixing-offline-mode
 https://alexandroperez.github.io/mws-walkthrough/?1.26.service-worker-restaurant-requests-with-parameters
 https://alexandroperez.github.io/mws-walkthrough/?1.27.service-worker-caching-responsive-images
+https://alexandroperez.github.io/mws-walkthrough/?1.28.handling-offline-maps-with-custom-content

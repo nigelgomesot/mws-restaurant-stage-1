@@ -49,6 +49,10 @@ self.addEventListener('fetch', function(event) {
 		if (requestUrl.pathname.startsWith(restaurant_path)) {
 			return event.respondWith(caches.match(restaurant_path));
 		}
+
+		if (requestUrl.pathname.startsWith('/img')) {
+			return event.respondWith(serveImage(event.request));
+		}
 	}
 
 	event.respondWith(
@@ -57,3 +61,19 @@ self.addEventListener('fetch', function(event) {
 		})
 	);
 });
+
+function serveImage(request) {
+	let imageStoreUrl = request.url;
+
+	imageStoreUrl = imageStoreUrl.replace(/-small\.\w{3,4}|-medium\.\w{3,4}|-large\.\w{3,4}/i,'');
+
+	return caches.open(contentImgCache).then(function(cache) {
+		return cache.match(imageStoreUrl).then(function(cacheResponse) {
+			return cacheResponse || fetch(request).then(function(networkResponse) {
+				cache.put(imageStoreUrl, networkResponse.clone());
+
+				return networkResponse;
+			});
+		});
+	});
+}
