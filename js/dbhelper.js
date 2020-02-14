@@ -205,5 +205,13 @@ class DBHelper {
     return marker;
   } */
 
+  static mapOffline() {
+    const map = document.getElementById('map');
+    map.className = 'map-offline';
+    map.innerHTML = `<div class="warning-icon">!</div>
+    <div class="warning-message">Unable to load maps</div>
+    <div class="warning-description">Are you offline? if you need maps please try after sometime.</div>`;
+  }
+
 }
 

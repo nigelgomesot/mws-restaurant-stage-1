@@ -89,9 +89,11 @@ initMap = () => {
       }).addTo(newMap);    
     } catch(error) {
       console.error('unable to load map:', error);
+      DBHelper.mapOffline();
     }
   } else {
     console.error('unable to load map: no internet access');
+    DBHelper.mapOffline();
   }
 
   updateRestaurants();
