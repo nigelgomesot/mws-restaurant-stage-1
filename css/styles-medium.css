@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+.inside #maincontent {
+ width: 50%;
+ margin-top: 110px;
+}
+
+#restaurants-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px 0px 0px 20px;
+  justify-content: space-around;
+}
+
+#restaurants-list li {
+  width: calc(50% - 30px);
+  max-width: 300px;
+  height: 440px;
+  position: relative;
+  margin: 0 20px 20px 0;
+}
+
+#breadcrumb {
+  width: calc(50% - 80px);
+}
+
+.inside #map-container {
+  background: blue none repeat scroll 0 0;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  width: 50%;
+  z-index: initial;
+}
+
+#restaurant-container {
+  margin-top: 0;
+}
+
+#reviews-list {
+  padding-right: 40px;
+}
+
+.inside #footer {
+  position: absolute;
+  width: 100%;
+  padding: 30px 0 30px 0;
+}

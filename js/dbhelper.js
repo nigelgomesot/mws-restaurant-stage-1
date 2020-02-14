@@ -147,10 +147,38 @@ class DBHelper {
   }
 
   /**
-   * Restaurant image URL.
+   * Restaurant image URL. It defaults to a medium sized image. It uses restaurant.photograph
+   * and fallbacks to restaurant.id if former is missing
    */
   static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
+    let url = `/img/${(restaurant.photograph.split('.')[0]||restaurant.id)}-medium.jpeg`;
+    return url;
+  }
+
+  /**
+   * Restaurant srcset attribute for browser to decide best resolution. It uses restaurant.photograph
+   * and fallbacks to restaurant.id if former is missing.
+   */
+  static imageSrcsetForRestaurant(restaurant) {
+    const imageSrc = `/img/${(restaurant.photograph.split('.')[0]||restaurant.id)}`;
+
+    return `${imageSrc}-small.jpeg 300w,
+            ${imageSrc}-medium.jpeg 600w,
+            ${imageSrc}-large.jpeg 800w`;
+  }
+
+  /**
+   * Restaurant sizes attribute so browser knows image sizes before deciding
+   * what image to download.
+   */
+  static imageSizesForRestaurant(restaurant) {
+    return `(max-width: 360px) 280px,
+            (max-width: 600px) 600px,
+            400px`;
+  }
+
+  static imageAltForRestaurant(restaurant) {
+    return `Image of ${restaurant.name} restaurant`;
   }
 
   /**
@@ -176,6 +204,14 @@ class DBHelper {
     );
     return marker;
   } */
+
+  static mapOffline() {
+    const map = document.getElementById('map');
+    map.className = 'map-offline';
+    map.innerHTML = `<div class="warning-icon">!</div>
+    <div class="warning-message">Unable to load maps</div>
+    <div class="warning-description">Are you offline? if you need maps please try after sometime.</div>`;
+  }
 
 }
 
