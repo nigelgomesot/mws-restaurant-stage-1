@@ -12,3 +12,4 @@ https://alexandroperez.github.io/mws-walkthrough/?1.27.service-worker-caching-re
 https://alexandroperez.github.io/mws-walkthrough/?1.28.handling-offline-maps-with-custom-content
 
 https://alexandroperez.github.io/mws-walkthrough/?2.1.cloning-and-running-the-rails-server
+https://alexandroperez.github.io/mws-walkthrough/?2.2.gulp-with-watchify-browserify-and-browsersync
