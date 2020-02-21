@@ -15,3 +15,4 @@ https://alexandroperez.github.io/mws-walkthrough/?2.1.cloning-and-running-the-ra
 https://alexandroperez.github.io/mws-walkthrough/?2.2.gulp-with-watchify-browserify-and-browsersync
 https://alexandroperez.github.io/mws-walkthrough/?2.3.fixing-code-to-work-with-new-gulp-setup
 https://alexandroperez.github.io/mws-walkthrough/?2.4.fetching-data-from-the-sails-api-server
+https://alexandroperez.github.io/mws-walkthrough/?2.5.setting-up-indexeddb-promised-for-offline-use

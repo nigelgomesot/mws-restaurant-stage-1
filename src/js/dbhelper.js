@@ -172,7 +172,7 @@ export default class DBHelper {
    * and fallbacks to restaurant.id if former is missing
    */
   static imageUrlForRestaurant(restaurant) {
-    let url = `/img/${(restaurant.photograph.split('.')[0]||restaurant.id)}-medium.jpeg`;
+    let url = `/img/${(restaurant.photograph||restaurant.id)}-medium.jpeg`;
     return url;
   }
 
@@ -181,7 +181,7 @@ export default class DBHelper {
    * and fallbacks to restaurant.id if former is missing.
    */
   static imageSrcsetForRestaurant(restaurant) {
-    const imageSrc = `/img/${(restaurant.photograph.split('.')[0]||restaurant.id)}`;
+    const imageSrc = `/img/${(restaurant.photograph||restaurant.id)}`;
 
     return `${imageSrc}-small.jpeg 300w,
             ${imageSrc}-medium.jpeg 600w,
