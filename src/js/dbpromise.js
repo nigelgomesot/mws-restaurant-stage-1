@@ -1,7 +1,13 @@
-import idb from 'idb';
+// REF: https://github.com/jakearchibald/idb/blob/master/changes.md
+
+import { openDB } from 'idb';
+
+if (!('indexedDB' in window)) {
+  console.warn('This browser doesn\'t support IndexedDB');
+}
 
 const dbPromise = {
-	db: idb.open('restaurant-reviews', 1, function(upgradeDb) {
+	db: openDB('restaurant-reviews', 1, function(upgradeDb) {
 	 switch (upgradeDb.oldVersion) {
       case 0:
         upgradeDb.createObjectStore('restaurants', { keyPath: 'id' });
