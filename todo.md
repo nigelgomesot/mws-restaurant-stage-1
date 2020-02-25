@@ -17,3 +17,4 @@ https://alexandroperez.github.io/mws-walkthrough/?2.3.fixing-code-to-work-with-n
 https://alexandroperez.github.io/mws-walkthrough/?2.4.fetching-data-from-the-sails-api-server
 https://alexandroperez.github.io/mws-walkthrough/?2.5.setting-up-indexeddb-promised-for-offline-use
 idb not loaded
+dbPromise methods not accessible

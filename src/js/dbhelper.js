@@ -31,12 +31,35 @@ export default class DBHelper {
         // const json = JSON.parse(xhr.responseText);
         // const restaurants = json.restaurants;
         const restaurants = JSON.parse(xhr.responseText);
+        dbPromise.putRestaurants(restaurants);
         callback(null, restaurants);
       } else { // Oops!. Got an error from server.
-        const error = (`Request failed. Returned status of ${xhr.status}`);
-        callback(error, null);
+        const error = (`Request failed. Returned status of ${xhr.status}, trying idb...`);
+        //callback(error, null);
+        console.warn(error);
+
+        dbPromise.getRestaurants().then(idbRestaurants => {
+
+          if (idbRestaurants.length > 0) {
+            callback(null, idbRestaurants);
+          } else {
+            callback('no restaurants found in idb', null);
+          }
+        });
       }
     };
+
+    xhr.onerror = () => {
+      console.warn('Error while trying xhr, trying idb...');
+
+      dbPromise.getRestaurants().then(idbRestaurants => {
+        if (idbRestaurants.length > 0) {
+          callback(null, idbRestaurants);
+        } else {
+          callback('no restaurants found in idb', null);
+        }
+      });
+    }
     xhr.send();
   }
 
