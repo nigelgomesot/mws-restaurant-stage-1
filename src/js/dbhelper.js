@@ -1,4 +1,4 @@
-import dbPromise from './dbpromise';
+import { dbPromise } from './dbpromise';
 
 /**
  * Common database helper functions.

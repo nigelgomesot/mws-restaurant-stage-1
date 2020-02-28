@@ -2,11 +2,7 @@
 
 import { openDB } from 'idb';
 
-if (!('indexedDB' in window)) {
-  console.warn('This browser doesn\'t support IndexedDB');
-}
-
-const dbPromise = {
+export const dbPromise = {
 	db: openDB('restaurant-reviews', 1, function(upgradeDb) {
 	 switch (upgradeDb.oldVersion) {
       case 0:
@@ -43,5 +39,3 @@ const dbPromise = {
   },
 
 };
-
-export default dbPromise;
