@@ -18,3 +18,4 @@ https://alexandroperez.github.io/mws-walkthrough/?2.4.fetching-data-from-the-sai
 https://alexandroperez.github.io/mws-walkthrough/?2.5.setting-up-indexeddb-promised-for-offline-use
 idb not loaded
 dbPromise methods not accessible
+	- REF: https://medium.com/javascript-in-plain-english/javascript-modules-for-beginners-56939088f7d9
