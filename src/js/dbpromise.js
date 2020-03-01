@@ -2,7 +2,7 @@
 
 import { openDB } from 'idb';
 
-export const dbPromise = {
+const dbPromise = {
 	db: openDB('restaurant-reviews', 1, function(upgradeDb) {
 	 switch (upgradeDb.oldVersion) {
       case 0:
@@ -10,7 +10,7 @@ export const dbPromise = {
     }
 	}),
 
-  putRestuarants(restaurants) {
+  putRestuarants: function(restaurants) {
     if(!restaurants.push) restaurants = [restaurants];
 
     return this.db.then(db => {
@@ -28,7 +28,7 @@ export const dbPromise = {
     });
   },
 
-  getRestaurants(id = undefined) {
+  getRestaurants: function(id = undefined) {
     return this.db.then(db => {
       const store = db.transaction('restaurants').objectStore('restaurants');
 
@@ -39,3 +39,5 @@ export const dbPromise = {
   },
 
 };
+
+export default dbPromise;

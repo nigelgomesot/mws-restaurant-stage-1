@@ -1,4 +1,5 @@
-import { dbPromise } from './dbpromise';
+import dbPromise from './dbpromise';
+console.log(dbPromise);
 
 /**
  * Common database helper functions.
@@ -18,6 +19,8 @@ export default class DBHelper {
     const port = 8000 // Change this to your server port
     return `http://localhost:${port}/data/restaurants.json`;
   }
+
+
 
   /**
    * Fetch all restaurants.
@@ -261,3 +264,4 @@ export default class DBHelper {
 
 }
 
+DBHelper.dbPromise = dbPromise;
