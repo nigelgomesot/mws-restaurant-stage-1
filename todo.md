@@ -19,4 +19,5 @@ https://alexandroperez.github.io/mws-walkthrough/?2.5.setting-up-indexeddb-promi
 idb not loaded
 dbPromise methods not accessible
 	- REF: https://medium.com/javascript-in-plain-english/javascript-modules-for-beginners-56939088f7d9
-	- unable to access dbPromise in statuc methods in class
+	- unable to access dbPromise in static methods in class
+	- https://exploringjs.com/es6/ch_modules.html

@@ -20,8 +20,6 @@ export default class DBHelper {
     return `http://localhost:${port}/data/restaurants.json`;
   }
 
-
-
   /**
    * Fetch all restaurants.
    */
