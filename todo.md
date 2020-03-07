@@ -21,3 +21,4 @@ dbPromise methods not accessible
 	- REF: https://medium.com/javascript-in-plain-english/javascript-modules-for-beginners-56939088f7d9
 	- unable to access dbPromise in static methods in class
 	- https://exploringjs.com/es6/ch_modules.html
+	- object literals with functions in es6 with export

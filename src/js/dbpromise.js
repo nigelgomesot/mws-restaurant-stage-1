@@ -10,7 +10,7 @@ const dbPromise = {
     }
 	}),
 
-  putRestuarants: function(restaurants) {
+  putRestuarants(restaurants) {
     if(!restaurants.push) restaurants = [restaurants];
 
     return this.db.then(db => {
@@ -28,7 +28,7 @@ const dbPromise = {
     });
   },
 
-  getRestaurants: function(id = undefined) {
+  getRestaurants(id = undefined) {
     return this.db.then(db => {
       const store = db.transaction('restaurants').objectStore('restaurants');
 
