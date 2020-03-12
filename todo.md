@@ -23,3 +23,4 @@ dbPromise methods not accessible
 	- https://exploringjs.com/es6/ch_modules.html
 	- object literals with functions in es6 with export
 	- replace DBHelper class with individual functions and use named exports
+	- export functions call each other

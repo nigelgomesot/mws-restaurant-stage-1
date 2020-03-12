@@ -1,4 +1,4 @@
-import DBHelper from './dbhelper';
+import * as DBHelper from './dbhelper';
 import SECRET from './secret';
 // import './register-sw';
 
