@@ -2,12 +2,12 @@ import dbPromise from './dbpromise';
 console.log(dbPromise);
 
 
-export function API_BASE_URL() {
+export function api_base_url() {
   const port = 1337 // Change this to your server port
   return `http://localhost:${port}`;
 }
 
-export function DATABASE_URL() {
+export function database_url() {
   const port = 8000 // Change this to your server port
   return `http://localhost:${port}/data/restaurants.json`;
 }
@@ -15,7 +15,7 @@ export function DATABASE_URL() {
 export function fetchRestaurants(callback) {
   let xhr = new XMLHttpRequest();
   // xhr.open('GET', DBHelper.DATABASE_URL);
-   xhr.open('GET', `${DBHelper.API_BASE_URL}/restaurants`);
+   xhr.open('GET', `${api_base_url()}/restaurants`);
   xhr.onload = () => {
     if (xhr.status === 200) { // Got a success response from server!
       // const json = JSON.parse(xhr.responseText);
@@ -54,7 +54,7 @@ export function fetchRestaurants(callback) {
 }
 
 export function fetchRestaurantById(id, callback) {
-  fetch(`${DBHelper.API_BASE_URL}/restaurants/${id}`).then(response => {
+  fetch(`${api_base_url()}/restaurants/${id}`).then(response => {
     if (!response.ok) {
       return Promise.reject("unable to fetch restaurant");
     }
@@ -69,7 +69,7 @@ export function fetchRestaurantById(id, callback) {
 
 export function fetchRestaurantByCuisine(cuisine, callback) {
   // Fetch all restaurants  with proper error handling
-  DBHelper.fetchRestaurants((error, restaurants) => {
+  fetchRestaurants((error, restaurants) => {
     if (error) {
       callback(error, null);
     } else {
@@ -85,7 +85,7 @@ export function fetchRestaurantByCuisine(cuisine, callback) {
  */
 export function fetchRestaurantByNeighborhood(neighborhood, callback) {
   // Fetch all restaurants
-  DBHelper.fetchRestaurants((error, restaurants) => {
+  fetchRestaurants((error, restaurants) => {
     if (error) {
       callback(error, null);
     } else {
@@ -122,7 +122,7 @@ export function fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, c
  */
 export function fetchNeighborhoods(callback) {
   // Fetch all restaurants
-  DBHelper.fetchRestaurants((error, restaurants) => {
+  fetchRestaurants((error, restaurants) => {
     if (error) {
       callback(error, null);
     } else {
@@ -140,7 +140,7 @@ export function fetchNeighborhoods(callback) {
  */
 export function fetchCuisines(callback) {
   // Fetch all restaurants
-  DBHelper.fetchRestaurants((error, restaurants) => {
+  fetchRestaurants((error, restaurants) => {
     if (error) {
       callback(error, null);
     } else {
@@ -203,7 +203,7 @@ export function mapMarkerForRestaurant(restaurant, map) {
   const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
     {title: restaurant.name,
     alt: restaurant.name,
-    url: DBHelper.urlForRestaurant(restaurant)
+    url: urlForRestaurant(restaurant)
     })
   marker.addTo(map);
   return marker;
