@@ -1,6 +1,5 @@
-import dbPromise from './dbpromise';
-console.log(dbPromise);
-
+import * as DBPromise from './dbpromise';
+console.log(DBPromise);
 
 export function api_base_url() {
   const port = 1337 // Change this to your server port
@@ -21,14 +20,14 @@ export function fetchRestaurants(callback) {
       // const json = JSON.parse(xhr.responseText);
       // const restaurants = json.restaurants;
       const restaurants = JSON.parse(xhr.responseText);
-      dbPromise.putRestaurants(restaurants);
+      DBPromise.putRestaurants(restaurants);
       callback(null, restaurants);
     } else { // Oops!. Got an error from server.
       const error = (`Request failed. Returned status of ${xhr.status}, trying idb...`);
       //callback(error, null);
       console.warn(error);
 
-      dbPromise.getRestaurants().then(idbRestaurants => {
+      DBPromise.getRestaurants().then(idbRestaurants => {
 
         if (idbRestaurants.length > 0) {
           callback(null, idbRestaurants);
@@ -42,7 +41,7 @@ export function fetchRestaurants(callback) {
   xhr.onerror = () => {
     console.warn('Error while trying xhr, trying idb...');
 
-    dbPromise.getRestaurants().then(idbRestaurants => {
+    DBPromise.getRestaurants().then(idbRestaurants => {
       if (idbRestaurants.length > 0) {
         callback(null, idbRestaurants);
       } else {
