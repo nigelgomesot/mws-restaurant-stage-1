@@ -11,10 +11,10 @@ export function db() {
 	});
 }
 
-export function putRestuarants(restaurants) {
+export function putRestaurants(restaurants) {
   if(!restaurants.push) restaurants = [restaurants];
 
-  return this.db.then(db => {
+  return db().then(db => {
     const store = db.transaction('restaurants', 'readwrite').objectStore('restaurants');
 
     Promise.all(restaurants.map(networkRestuarant => {
@@ -30,7 +30,7 @@ export function putRestuarants(restaurants) {
 }
 
 export function getRestaurants(id = undefined) {
-  return this.db.then(db => {
+  return db().then(db => {
     const store = db.transaction('restaurants').objectStore('restaurants');
 
     if (id) return store.get(Number(id));

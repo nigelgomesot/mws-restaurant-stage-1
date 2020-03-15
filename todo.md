@@ -24,3 +24,4 @@ dbPromise methods not accessible
 	- object literals with functions in es6 with export
 	- replace DBHelper class with individual functions and use named exports
 	- export functions call each other
+	- fix IDB error
