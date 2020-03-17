@@ -3,17 +3,23 @@
 import { openDB } from 'idb';
 
 export function db() {
-	return openDB('restaurant-reviews', 1, function(upgradeDb) {
-	 switch (upgradeDb.oldVersion) {
-      case 0:
-        upgradeDb.createObjectStore('restaurants', { keyPath: 'id' });
+	return openDB('restaurant-reviews', 1, {
+    upgrade(db, oldVersion, newVersion, transaction) {
+      console.log(oldVersion);
+      console.log(newVersion);
+      console.log(transaction);
+
+      const store = db.createObjectStore('restaurants', {
+        keyPath: 'id',
+        // If it isn't explicitly set, create a value by auto incrementing.
+        // autoIncrement: true,
+      });
     }
-	});
+  });
 }
 
 export function putRestaurants(restaurants) {
   if(!restaurants.push) restaurants = [restaurants];
-
   return db().then(db => {
     const store = db.transaction('restaurants', 'readwrite').objectStore('restaurants');
 
