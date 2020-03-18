@@ -1,5 +1,4 @@
 import * as DBPromise from './dbpromise';
-console.log(DBPromise);
 
 export function api_base_url() {
   const port = 1337 // Change this to your server port

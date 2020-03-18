@@ -26,3 +26,4 @@ dbPromise methods not accessible
 	- export functions call each other
 	- fix IDB error
 		- upgrade DB not working
+	- fix filters
