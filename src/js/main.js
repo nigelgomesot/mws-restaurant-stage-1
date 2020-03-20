@@ -119,7 +119,6 @@ const initMap = () => {
  * Update page and map for current restaurants.
  */
 const updateRestaurants = () => {
-  debugger
   const cSelect = document.getElementById('cuisines-select');
   const nSelect = document.getElementById('neighborhoods-select');
 
