@@ -25,5 +25,6 @@ dbPromise methods not accessible
 	- replace DBHelper class with individual functions and use named exports
 	- export functions call each other
 	- fix IDB error
-		- upgrade DB not working
+	  - upgrade DB not working
 	- fix filters
+	  - dynamic options are not accessible for updateRestaurants

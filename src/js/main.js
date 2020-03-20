@@ -119,6 +119,7 @@ const initMap = () => {
  * Update page and map for current restaurants.
  */
 const updateRestaurants = () => {
+  debugger
   const cSelect = document.getElementById('cuisines-select');
   const nSelect = document.getElementById('neighborhoods-select');
 
@@ -137,6 +138,8 @@ const updateRestaurants = () => {
     }
   })
 }
+document.getElementById("cuisines-select").addEventListener("select", updateRestaurants);
+document.getElementById("neighborhoods-select").addEventListener("select", updateRestaurants);
 
 /**
  * Clear current restaurants, their HTML and remove their map markers.
