@@ -26,5 +26,7 @@ dbPromise methods not accessible
 	- export functions call each other
 	- fix IDB error
 	  - upgrade DB not working
-	- fix filters
-	  - dynamic options are not accessible for updateRestaurants
+fix filters
+	- dynamic options are not accessible for updateRestaurants
+https://alexandroperez.github.io/mws-walkthrough/?2.5.setting-up-indexeddb-promised-for-offline-use
+	- 5. Now refactor your fetchRestaurantsById helper method

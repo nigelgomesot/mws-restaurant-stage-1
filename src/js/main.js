@@ -137,8 +137,8 @@ const updateRestaurants = () => {
     }
   })
 }
-document.getElementById("cuisines-select").addEventListener("select", updateRestaurants);
-document.getElementById("neighborhoods-select").addEventListener("select", updateRestaurants);
+document.getElementById("cuisines-select").addEventListener("change", updateRestaurants);
+document.getElementById("neighborhoods-select").addEventListener("change", updateRestaurants);
 
 /**
  * Clear current restaurants, their HTML and remove their map markers.
