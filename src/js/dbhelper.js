@@ -54,14 +54,21 @@ export function fetchRestaurants(callback) {
 export function fetchRestaurantById(id, callback) {
   fetch(`${api_base_url()}/restaurants/${id}`).then(response => {
     if (!response.ok) {
-      return Promise.reject("unable to fetch restaurant");
+      return Promise.reject("unable to fetch restaurant from network");
     }
 
     return response.json();
   }).then(fetchedRestaurant => {
+    DBPromise.putRestaurants(fetchedRestaurant);
     return callback(null, fetchedRestaurant);
   }).catch(networkError => {
-    return callback(networkError, null);
+    console.log(`${networkError}, trying idb...`);
+    DBPromise.getRestaurants(id).then(idbRestaurant => {
+      if (!idbRestaurant) {
+        return callback('Restaurant not found in idb', null);
+      }
+      return callback(null, idbRestaurant);
+    });
   });
 }
 
