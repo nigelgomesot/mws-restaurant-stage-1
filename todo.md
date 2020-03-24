@@ -31,6 +31,7 @@ fix filters
 https://alexandroperez.github.io/mws-walkthrough/?2.5.setting-up-indexeddb-promised-for-offline-use
 	- 5. Now refactor your fetchRestaurantsById helper method
 https://alexandroperez.github.io/mws-walkthrough/?2.6.enabling-service-worker-and-getting-a-good-pwa-score
-	- fix gulp to copy icons in dist directory
+	- fix gulp to copy icons in dist directory DONE
 	- fix pwa score
+		- sw not registered
 	- fix performance score
