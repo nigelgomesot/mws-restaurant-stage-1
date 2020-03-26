@@ -35,3 +35,4 @@ https://alexandroperez.github.io/mws-walkthrough/?2.6.enabling-service-worker-an
 	- fix pwa score
 		- sw not registered
 	- fix performance score
+		- Defer offscreen images

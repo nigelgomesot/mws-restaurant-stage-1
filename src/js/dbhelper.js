@@ -5,10 +5,10 @@ export function api_base_url() {
   return `http://localhost:${port}`;
 }
 
-export function database_url() {
-  const port = 8000 // Change this to your server port
-  return `http://localhost:${port}/data/restaurants.json`;
-}
+// export function database_url() {
+//   const port = 8000 // Change this to your server port
+//   return `http://localhost:${port}/data/restaurants.json`;
+// }
 
 export function fetchRestaurants(callback) {
   let xhr = new XMLHttpRequest();

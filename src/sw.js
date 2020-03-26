@@ -16,8 +16,7 @@ self.addEventListener('install', function(event) {
 				'/css/styles.css',
 				'/css/styles-medium.css',
 				'/js/main.js',
-				'/js/restaurant_info.js',
-				'data/restaurants.json'
+				'/js/restaurant_info.js'
 			]);
 		})
 	);
