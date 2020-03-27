@@ -36,3 +36,4 @@ https://alexandroperez.github.io/mws-walkthrough/?2.6.enabling-service-worker-an
 		- sw not registered
 	- fix performance score
 		- Defer offscreen images
+			- large img is selected
