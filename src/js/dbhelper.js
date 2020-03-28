@@ -182,8 +182,7 @@ export function imageSrcsetForRestaurant(restaurant) {
   const imageSrc = `/img/${(restaurant.photograph||restaurant.id)}`;
 
   return `${imageSrc}-small.jpeg 300w,
-          ${imageSrc}-medium.jpeg 600w,
-          ${imageSrc}-large.jpeg 800w`;
+          ${imageSrc}-medium.jpeg 600w`;//,${imageSrc}-large.jpeg 800w`;
 }
 
 /**
@@ -191,9 +190,9 @@ export function imageSrcsetForRestaurant(restaurant) {
  * what image to download.
  */
 export function imageSizesForRestaurant(restaurant) {
-  return `(max-width: 360px) 280px,
-          (max-width: 600px) 600px,
-          400px`;
+  return "(max-width: 360px) 280px,\
+          (max-width: 600px) 600px,\
+          400px";
 }
 
 export function imageAltForRestaurant(restaurant) {
