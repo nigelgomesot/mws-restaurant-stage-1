@@ -1,6 +1,6 @@
 import * as DBHelper from './dbhelper';
 import SECRET from './secret';
-import * as RegisterSW from './register-sw';
+//import * as RegisterSW from './register-sw';
 
 let restaurants,
   neighborhoods,
@@ -12,7 +12,14 @@ var markers = []
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-  initMap(); // added 
+  initMap(); // added
+
+  DBHelper.fetchRestaurantsV2().then(fetchedRestaurants => {
+    DBHelper.fetchNeighborhoodsV2();
+  }).then(fetchedRestaurants => {
+    DBHelper.fetchCuisinesV2();
+  });
+
   fetchNeighborhoods();
   fetchCuisines();
 });

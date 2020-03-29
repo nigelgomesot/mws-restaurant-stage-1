@@ -39,4 +39,6 @@ https://alexandroperez.github.io/mws-walkthrough/?2.6.enabling-service-worker-an
 			- large img is selected
 				- issue is with Lighhouse(Nexus) selecting higher DPR image
 					- REF: https://github.com/GoogleChrome/lighthouse/issues/4322
-	- Replace fetch Cuisine, & fetch Neighbourhoods to promises to reduce number of restaurants fetch from 3 to 2.
+	- for index page; Replace fetch Cuisine, & fetch Neighbourhoods to promises to reduce number of restaurants fetch from 3 to 2.
+		- uncomment import * as RegisterSW from './register-sw';
+		- make fetchRestaurantsV2 thenable

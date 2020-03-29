@@ -51,6 +51,22 @@ export function fetchRestaurants(callback) {
   xhr.send();
 }
 
+export function fetchRestaurantsV2() {
+  fetch(`${api_base_url()}/restaurants`).then(response => {
+    if (!response.ok) {
+      Promise.reject("unable to fetch restaurants from network");
+    }
+
+    return response.json();
+  }).then(fetchedRestaurants => {
+    console.dir(fetchedRestaurants);
+
+    return Promise.resolve(fetchedRestaurants);
+  }).catch(networkError => {
+    console.error(`${networkError}`);
+  });
+}
+
 export function fetchRestaurantById(id, callback) {
   fetch(`${api_base_url()}/restaurants/${id}`).then(response => {
     if (!response.ok) {
@@ -140,6 +156,17 @@ export function fetchNeighborhoods(callback) {
   });
 }
 
+export function fetchNeighborhoodsV2(restaurants) {
+  // Get all neighborhoods from all restaurants
+  const neighborhoods = restaurants.map((v, i) => restaurants[i].neighborhood);
+  // Remove duplicates from neighborhoods
+  const uniqueNeighborhoods = neighborhoods.filter((v, i) => neighborhoods.indexOf(v) == i);
+  console.log('neighborhoods:');
+  console.dir(uniqueNeighborhoods);
+
+  return restaurants;
+}
+
 /**
  * Fetch all cuisines with proper error handling.
  */
@@ -156,6 +183,16 @@ export function fetchCuisines(callback) {
       callback(null, uniqueCuisines);
     }
   });
+}
+
+export function fetchCuisinesV2(restaurants) {
+  const cuisines = restaurants.map((v, i) => restaurants[i].cuisine_type)
+  // Remove duplicates from cuisines
+  const uniqueCuisines = cuisines.filter((v, i) => cuisines.indexOf(v) == i)
+  console.log('cuisines:');
+  console.dir(uniqueCuisines);
+
+  return restaurants;      
 }
 
 /**
