@@ -1,6 +1,6 @@
 import * as DBHelper from './dbhelper';
 import SECRET from './secret';
-//import * as RegisterSW from './register-sw';
+import * as RegisterSW from './register-sw';
 
 let restaurants,
   neighborhoods,
@@ -15,13 +15,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
   initMap(); // added
 
   DBHelper.fetchRestaurantsV2().then(fetchedRestaurants => {
-    DBHelper.fetchNeighborhoodsV2();
+    populateNeighborhoodsFilter(fetchedRestaurants);
+
+    return fetchedRestaurants;
   }).then(fetchedRestaurants => {
-    DBHelper.fetchCuisinesV2();
+    populateCuisinesFilter(fetchedRestaurants);
   });
 
-  fetchNeighborhoods();
-  fetchCuisines();
+  // fetchNeighborhoods();
+  //fetchCuisines();
 });
 
 /**
@@ -36,6 +38,13 @@ const fetchNeighborhoods = () => {
       fillNeighborhoodsHTML();
     }
   });
+}
+
+const populateNeighborhoodsFilter = (restaurants) => {
+  const neighborhoods = DBHelper.fetchNeighborhoodsV2(restaurants);
+
+  self.neighborhoods = neighborhoods;
+  fillNeighborhoodsHTML();
 }
 
 /**
@@ -63,6 +72,13 @@ const fetchCuisines = () => {
       fillCuisinesHTML();
     }
   });
+}
+
+const populateCuisinesFilter = (restaurants) => {
+  const cuisines = DBHelper.fetchCuisinesV2(restaurants);
+
+  self.cuisines = cuisines;
+  fillCuisinesHTML();
 }
 
 /**

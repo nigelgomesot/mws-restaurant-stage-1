@@ -52,7 +52,7 @@ export function fetchRestaurants(callback) {
 }
 
 export function fetchRestaurantsV2() {
-  fetch(`${api_base_url()}/restaurants`).then(response => {
+  return fetch(`${api_base_url()}/restaurants`).then(response => {
     if (!response.ok) {
       Promise.reject("unable to fetch restaurants from network");
     }
@@ -164,7 +164,7 @@ export function fetchNeighborhoodsV2(restaurants) {
   console.log('neighborhoods:');
   console.dir(uniqueNeighborhoods);
 
-  return restaurants;
+  return uniqueNeighborhoods;
 }
 
 /**
@@ -192,7 +192,7 @@ export function fetchCuisinesV2(restaurants) {
   console.log('cuisines:');
   console.dir(uniqueCuisines);
 
-  return restaurants;      
+  return uniqueCuisines;
 }
 
 /**
