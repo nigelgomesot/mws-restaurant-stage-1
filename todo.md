@@ -42,3 +42,5 @@ https://alexandroperez.github.io/mws-walkthrough/?2.6.enabling-service-worker-an
 	- for index page; Replace fetch Cuisine, & fetch Neighbourhoods to promises to reduce number of restaurants fetch from 3 to 2.
 		- uncomment import * as RegisterSW from './register-sw';
 		- make fetchRestaurantsV2 thenable
+https://alexandroperez.github.io/mws-walkthrough/?3.1.getting-reviews-from-new-sails-server
+	- 9:00
