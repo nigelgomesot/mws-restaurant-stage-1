@@ -1,6 +1,6 @@
 import * as DBHelper from './dbhelper';
 import SECRET from './secret';
-import * as RegisterSW from './register-sw';
+// import * as RegisterSW from './register-sw';
 
 let restaurant;
 var newMap;
@@ -116,8 +116,12 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
   if (restaurant.operating_hours) {
     fillRestaurantHoursHTML();
   }
+
   // fill reviews
-  fillReviewsHTML();
+   DBHelper.fetchReviewsByRestaurantId(restaurant.id)
+    .then(fillReviewsHTML);
+
+  //fillReviewsHTML();
 }
 
 /**

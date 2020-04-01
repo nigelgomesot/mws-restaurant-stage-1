@@ -44,3 +44,5 @@ https://alexandroperez.github.io/mws-walkthrough/?2.6.enabling-service-worker-an
 		- make fetchRestaurantsV2 thenable
 https://alexandroperez.github.io/mws-walkthrough/?3.1.getting-reviews-from-new-sails-server
 	- 9:00
+	- 17:00
+uncomment SW

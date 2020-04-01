@@ -195,6 +195,24 @@ export function fetchCuisinesV2(restaurants) {
   return uniqueCuisines;
 }
 
+export function fetchReviewsByRestaurantId(restaurant_id) {
+  return fetch(`${api_base_url()}/reviews/?restaurant_id=${restaurant_id}`).then(response => {
+    if (!response.ok) return Promise.reject("fetch reviews network error");
+
+    return response.json();
+  }).then(fetchedReviews => {
+    // TODO: store reviews on idb
+
+    return fetchedReviews;
+  }).catch(networkError => {
+    // TODO: try to get reviews from idb
+
+    console.log(`${networkError}`);
+
+    return null;
+  });
+}
+
 /**
  * Restaurant page URL.
  */
