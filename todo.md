@@ -45,4 +45,5 @@ https://alexandroperez.github.io/mws-walkthrough/?2.6.enabling-service-worker-an
 https://alexandroperez.github.io/mws-walkthrough/?3.1.getting-reviews-from-new-sails-server
 	- 9:00
 	- 17:00
+https://alexandroperez.github.io/mws-walkthrough/?3.2.upgrading-idb-for-restaurant-reviews
 uncomment SW
