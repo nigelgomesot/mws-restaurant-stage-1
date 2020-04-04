@@ -3,11 +3,22 @@
 import { openDB } from 'idb';
 
 export function db() {
-	return openDB('restaurant-reviews', 1, {
+	return openDB('restaurant-reviews', 2, {
     upgrade(db, oldVersion, newVersion, transaction) {
-      const store = db.createObjectStore('restaurants', {
-        keyPath: 'id'
-      });
+      let store;
+
+      switch(oldVersion) {
+        case 0:
+          db.createObjectStore('restaurants', {
+            keyPath: 'id'
+          });
+        case 1:
+          db.createObjectStore('reviews', {
+            keyPath: 'id'
+          }).createIndex(
+            'restaurant_id', 'restaurant_id'
+          );
+      }
     }
   });
 }
@@ -36,5 +47,23 @@ export function getRestaurants(id = undefined) {
     if (id) return store.get(Number(id));
 
     return store.getAll();
+  });
+}
+
+export function putReviews(reviews) {
+  if (!reviews.push) reviews = [reviews];
+
+  return db().then(db => {
+    const store = db.transaction('reviews', 'readwrite').objectStore('reviews');
+
+    Promise.all(reviews.map(networkReview => {
+      return store.get(networkReview.id).then(idbReview => {
+        if (!idbReview || networkReview.updatedAt > idbReview.updatedAt) {
+          return store.put(networkReview);
+        }
+      });
+    })).then(function () {
+      return store.complete;
+    });
   });
 }

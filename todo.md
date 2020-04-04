@@ -46,4 +46,6 @@ https://alexandroperez.github.io/mws-walkthrough/?3.1.getting-reviews-from-new-s
 	- 9:00
 	- 17:00
 https://alexandroperez.github.io/mws-walkthrough/?3.2.upgrading-idb-for-restaurant-reviews
-uncomment SW
+	- integrate getReviewsForRestaurant
+	-  TODO: try to get reviews from idb
+uncomment SW (main.js, restaurant_info.js)

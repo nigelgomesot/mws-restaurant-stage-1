@@ -201,7 +201,8 @@ export function fetchReviewsByRestaurantId(restaurant_id) {
 
     return response.json();
   }).then(fetchedReviews => {
-    // TODO: store reviews on idb
+    // Store reviews on idb
+    DBPromise.putReviews(fetchedReviews);
 
     return fetchedReviews;
   }).catch(networkError => {
