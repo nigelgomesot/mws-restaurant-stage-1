@@ -67,3 +67,11 @@ export function putReviews(reviews) {
     });
   });
 }
+
+export function getReviewsForRestaurant(id) {
+  return db().then(db => {
+    const storeIndex = db.transaction('reviews').objectStore('reviews').index('restaurant_id');
+
+    return storeIndex.getAll(Number(id));
+  });
+}

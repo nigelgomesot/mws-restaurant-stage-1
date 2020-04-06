@@ -49,3 +49,5 @@ https://alexandroperez.github.io/mws-walkthrough/?3.2.upgrading-idb-for-restaura
 	- integrate getReviewsForRestaurant
 	-  TODO: try to get reviews from idb
 uncomment SW (main.js, restaurant_info.js)
+https://alexandroperez.github.io/mws-walkthrough/?3.3.favorite-restaurants-using-accessible-toggle-buttons
+Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.

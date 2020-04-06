@@ -206,11 +206,15 @@ export function fetchReviewsByRestaurantId(restaurant_id) {
 
     return fetchedReviews;
   }).catch(networkError => {
-    // TODO: try to get reviews from idb
+    // try to get reviews from idb
+    console.log(`${networkError}, trying idb...`);
 
-    console.log(`${networkError}`);
+    return DBPromise.getReviewsForRestaurant(restaurant_id).then(idbReviews => {
 
-    return null;
+      if (idbReviews.length < 1) return null;
+
+      return idbReviews;
+    });
   });
 }
 
