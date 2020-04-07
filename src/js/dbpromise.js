@@ -23,14 +23,15 @@ export function db() {
   });
 }
 
-export function putRestaurants(restaurants) {
+export function putRestaurants(restaurants, forceUpdate = false) {
   if(!restaurants.push) restaurants = [restaurants];
   return db().then(db => {
     const store = db.transaction('restaurants', 'readwrite').objectStore('restaurants');
 
     Promise.all(restaurants.map(networkRestuarant => {
       return store.get(networkRestuarant.id).then(idbRestaurant => {
-        if (!idbRestaurant || networkRestuarant.updatedAt > idbRestaurant.updatedAt) {
+        if (forceUpdate) return store.put(networkRestuarant);
+        if (!idbRestaurant || new Date(networkRestuarant.updatedAt) > new Date(idbRestaurant.updatedAt)) {
           return store.put(networkRestuarant);
         }
       });
@@ -58,7 +59,7 @@ export function putReviews(reviews) {
 
     Promise.all(reviews.map(networkReview => {
       return store.get(networkReview.id).then(idbReview => {
-        if (!idbReview || networkReview.updatedAt > idbReview.updatedAt) {
+        if (!idbReview || new Date(networkReview.updatedAt) > new Date(idbReview.updatedAt)) {
           return store.put(networkReview);
         }
       });
