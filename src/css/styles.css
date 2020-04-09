@@ -373,3 +373,16 @@ nav h1 a:focus
 .map-offline .warning-suggestion {
   font-size: .9em;
 }
+
+button.fav {
+
+}
+
+button.fav[aria-pressed=true] {
+
+}
+
+button.fav:hover,
+button.fav:focus {
+
+}

@@ -1,5 +1,6 @@
 import * as DBHelper from './dbhelper';
 import SECRET from './secret';
+import favoriteButton from './favorite-button'
 //import * as RegisterSW from './register-sw';
 
 let restaurants,
@@ -204,6 +205,9 @@ const createRestaurantHTML = (restaurant) => {
   image.srcset = DBHelper.imageSrcsetForRestaurant(restaurant);
   image.sizes = DBHelper.imageSizesForRestaurant(restaurant);
   li.append(image);
+
+  const favButton = favoriteButton(restaurant);
+  li.append(favButton);
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;

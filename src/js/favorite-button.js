@@ -11,7 +11,7 @@ function handleClick() {
 	return fetch(url, PUT).then(response => {
 		if (!response.ok) return Promise.reject('unable to update favorite status.');
 
-		return resonse.json();
+		return response.json();
 	}).then(updatedRestaurant => {
 		// update IDB
 		DBPromise.putRestaurants(updatedRestaurant, true);
