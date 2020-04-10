@@ -375,14 +375,14 @@ nav h1 a:focus
 }
 
 button.fav {
-
+  width: 100%;
 }
 
 button.fav[aria-pressed=true] {
-
+  color: red;
 }
 
 button.fav:hover,
 button.fav:focus {
-
+  border-color: orange;
 }

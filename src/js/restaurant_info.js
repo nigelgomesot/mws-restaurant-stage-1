@@ -1,5 +1,6 @@
 import * as DBHelper from './dbhelper';
 import SECRET from './secret';
+import favoriteButton from './favorite-button'
 //import * as RegisterSW from './register-sw';
 
 let restaurant;
@@ -111,6 +112,9 @@ const fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
+
+  const favButtonContainer = document.getElementById('fav-button-container');
+  favButtonContainer.append(favoriteButton(restaurant));
 
   // fill operating hours
   if (restaurant.operating_hours) {
