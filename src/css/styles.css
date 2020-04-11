@@ -384,5 +384,5 @@ button.fav[aria-pressed=true] {
 
 button.fav:hover,
 button.fav:focus {
-  border-color: orange;
+  background-color: lightgrey;
 }

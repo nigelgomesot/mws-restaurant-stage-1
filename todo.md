@@ -53,5 +53,7 @@ https://alexandroperez.github.io/mws-walkthrough/?3.3.favorite-restaurants-using
 	- 2. Create a new file src/js/favorite-button.js
 	- 3. In src/js/main.js we'll import our favorite button
 	- 5. Now we need to add a favorite button to our restaurant info page
+https://alexandroperez.github.io/mws-walkthrough/?3.4.adding-a-form-for-new-reviews
+
 uncomment SW (main.js, restaurant_info.js)
 Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.
