@@ -56,6 +56,7 @@ https://alexandroperez.github.io/mws-walkthrough/?3.3.favorite-restaurants-using
 https://alexandroperez.github.io/mws-walkthrough/?3.4.adding-a-form-for-new-reviews
 	- function validateAndGetData()
 	- function handleSubmit(e)
+	- export default function reviewForm(restaurantId)
 
 uncomment SW (main.js, restaurant_info.js)
 Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.

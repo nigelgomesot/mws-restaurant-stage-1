@@ -61,3 +61,30 @@ function validateAndGetData() {
 
 	return data;
 }
+
+function handleSubmit(e) {
+	e.preventDefault();
+
+	const review = validateAndGetData();
+	if (!review) return;
+	console.log(review);
+
+	const url =  `${DBHelper.api_base_url()}/reviews`;
+	const POST = {
+		method: 'POST',
+		body: JSON.stringify(review)
+	};
+
+	return fetch(url, POST).then(response => {
+		if (!response.ok) return Promise.reject('post review failed.');
+
+		return response.json();
+	}).then(newNetworkReview => {
+		DBPromise.putReviews(newNetworkReview);
+		const reviewList = document.getElementById('reviews-list');
+		const newReview = createReviewHTML(newNetworkReview);
+		reviewList.appendChild(newReview);
+
+		clearForm();
+	});
+}
