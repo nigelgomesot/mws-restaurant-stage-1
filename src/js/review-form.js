@@ -88,3 +88,51 @@ function handleSubmit(e) {
 		clearForm();
 	});
 }
+
+export default function reviewForm(restaurantId) {
+	const form = document.createElement('form');
+	form.id = 'review-form';
+	form.dataset.restaurantId = restaurantId;
+
+	// Name input
+	let p = document.createElement('p');
+	const name = document.createElement('input');
+	name.id = 'name';
+	name.setAttribute('type', 'text');
+	name.setAttribute('aria-label', 'Name');
+	name.setAttribute('placeholder', 'Enter your name');
+	p.appendChild(name);
+	form.appendChild(p);
+
+	// Rating select
+	p = document.createElement('p');
+	const selectLabel = document.createElement('label');
+	selectLabel.setAttribute('for', 'rating');
+	selectLabel.innerText = 'Select rating: ';
+	p.appendChild(selectLabel);
+	const rating = document.createElement('select');
+	rating.id = 'rating';
+	rating.name = 'rating';
+	rating.classList.add('rating');
+	['--', 1, 2, 3, 4, 5].forEach(number => {
+		const option = document.createElement('option');
+		option.value = number;
+		option.innerHTML = number;
+		if (number === '--') option.selectedIndex = true;
+		rating.appendChild(option);
+	});
+	p.appendChild(rating);
+	form.appendChild(p);
+
+	// Comment textarea
+	p = document.createElement('p');
+	const comments = document.createElement('textarea');
+	comments.id = 'comments';
+	comments.setAttribute('aria-label', 'Comments');
+	comments.setAttribute('placeholder', 'Enter comments here.')
+	comments.setAttribute('rows', '10');
+	p.appendChild(comments);
+	form.appendChild(p);
+
+	// PENDING:
+}
