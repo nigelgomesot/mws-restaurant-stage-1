@@ -54,8 +54,8 @@ function validateAndGetData() {
 	}
 	data.comments = comments.value;
 
-	const restaurantId = document.getElementById('review-form').dataset.restaurantId;
-	data.restaurantId = Number(restaurantId);
+	const restaurant_id = document.getElementById('review-form').dataset.restaurantId;
+	data.restaurant_id = Number(restaurant_id);
 
 	data.createdAt = new Date().toISOString();
 
@@ -134,5 +134,17 @@ export default function reviewForm(restaurantId) {
 	p.appendChild(comments);
 	form.appendChild(p);
 
-	// PENDING:
-}
+	// Add button
+	p = document.createElement('p');
+	const addButton = document.createElement('button');
+	addButton.setAttribute('type', 'submit');
+	addButton.setAttribute('aria-label', 'Add a Review');
+	addButton.classList.add('add-review');
+	addButton.innerHTML = "<span>+</span>";
+	p.appendChild(addButton);
+	form.appendChild(p);
+
+	form.onsubmit = handleSubmit;
+
+	return form;
+};

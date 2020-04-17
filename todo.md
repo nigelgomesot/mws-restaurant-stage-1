@@ -58,6 +58,7 @@ https://alexandroperez.github.io/mws-walkthrough/?3.4.adding-a-form-for-new-revi
 	- function handleSubmit(e)
 	- export default function reviewForm(restaurantId)
 	- Add Button
+https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 
 uncomment SW (main.js, restaurant_info.js)
 Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.
