@@ -21,6 +21,32 @@ function handleClick() {
 	});
 }
 
+function handleClick2() {
+	if ('serviceWorker' in navigator && 'SyncManager' in window) {
+		return handleWithBackgroundSync.call(this);
+	}
+
+	handleClick.call(this);
+}
+
+function handleWithBackgroundSync() {
+	console.log('handleWithBackgroundSync:');
+
+	// update restaurants idb
+	// add to offline favorites
+
+	DBPromise.getRestaurants(this.dataset.id)
+	.then(idbRestaurant => {
+		console.log(idbRestaurant.id);
+		console.log(this.dataset.id);
+
+		return idbRestaurant;
+	});
+
+	//putRestaurants(restaurants, forceUpdate = false)
+}
+
+
 export default function favoriteButton(restaurant) {
 	const button = document.createElement('button');
 	button.innerHTML = "&#x2764;"
@@ -28,7 +54,7 @@ export default function favoriteButton(restaurant) {
 	button.dataset.id = restaurant.id;
 	button.setAttribute('aria-label', `Mark ${restaurant.name} as favorite`);
 	button.setAttribute('aria-pressed', restaurant.is_favorite);
-	button.onclick = handleClick;
+	button.onclick = handleClick2;
 
 	return button;
 }
