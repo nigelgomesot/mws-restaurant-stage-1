@@ -21,6 +21,14 @@ function handleClick() {
 	});
 }
 
+function getIsFavValue() {
+	return this.getAttribute('aria-pressed') === 'true';
+}
+
+function setIsFavValue(value) {
+	this.setAttribute('aria-pressed', value);
+}
+
 function handleClick2() {
 	if ('serviceWorker' in navigator && 'SyncManager' in window) {
 		return handleWithBackgroundSync.call(this);
@@ -37,13 +45,23 @@ function handleWithBackgroundSync() {
 
 	DBPromise.getRestaurants(this.dataset.id)
 	.then(idbRestaurant => {
-		console.log(idbRestaurant.id);
-		console.log(this.dataset.id);
+		console.log(`creating in memory idbRestaurant: ${idbRestaurant.id}`);
+
+		const isFav = !getIsFavValue.call(this);
+		const updatedAt = new Date().toISOString();
+		idbRestaurant.is_favorite = isFav;
+		idbRestaurant.updatedAt = updatedAt;
 
 		return idbRestaurant;
-	});
+	}).then(updatedRestaurant => {
+		console.log(`updating in idb idbRestaurant: ${updatedRestaurant.id}`);
 
-	//putRestaurants(restaurants, forceUpdate = false)
+		DBPromise.putRestaurants(updatedRestaurant);
+
+		setIsFavValue.call(this, updatedRestaurant.is_favorite);
+	})
+	;
+
 }
 
 
@@ -56,5 +74,5 @@ export default function favoriteButton(restaurant) {
 	button.setAttribute('aria-pressed', restaurant.is_favorite);
 	button.onclick = handleClick2;
 
-	return button;
+	return button
 }
