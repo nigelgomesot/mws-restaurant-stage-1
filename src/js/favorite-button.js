@@ -45,7 +45,7 @@ function handleWithBackgroundSync() {
 
 	DBPromise.getRestaurants(this.dataset.id)
 	.then(idbRestaurant => {
-		console.log(`creating in memory idbRestaurant: ${idbRestaurant.id}`);
+		console.log(`creating in memory, restaurant_id: ${idbRestaurant.id}`);
 
 		const isFav = !getIsFavValue.call(this);
 		const updatedAt = new Date().toISOString();
@@ -54,14 +54,22 @@ function handleWithBackgroundSync() {
 
 		return idbRestaurant;
 	}).then(updatedRestaurant => {
-		console.log(`updating in idb idbRestaurant: ${updatedRestaurant.id}`);
+		console.log(`updating restaurants DB, restaurant_id: ${updatedRestaurant.id}`);
 
 		DBPromise.putRestaurants(updatedRestaurant);
 
-		setIsFavValue.call(this, updatedRestaurant.is_favorite);
-	})
-	;
+		return updatedRestaurant;
+	}).then(updatedRestaurant => {
+		console.log(`updating offline-favorites DB, restaurant_id: ${updatedRestaurant.id}`);
 
+		DBPromise.putOfflineFavorite(updatedRestaurant.id, updatedRestaurant.is_favorite);
+
+		return updatedRestaurant;
+	}).then(updatedRestaurant => {
+		console.log(`updating view page, restaurant_id: ${updatedRestaurant.id}`);
+
+		setIsFavValue.call(this, updatedRestaurant.is_favorite);
+	});
 }
 
 

@@ -80,3 +80,18 @@ export function getReviewsForRestaurant(id) {
     return storeIndex.getAll(Number(id));
   });
 }
+
+export function putOfflineFavorite(restaurant_id, is_favorite) {
+  return db().then(db => {
+    const store = db.transaction('offline-favorites', 'readwrite').objectStore('offline-favorites');
+
+    const offlineFavorite = {
+      restaurant_id: restaurant_id,
+      is_favorite: is_favorite,
+    };
+
+    store.put(offlineFavorite).then(() => store.complete).catch(err => {
+      console.error(`putOfflineFavorite failed: restaurant_id: ${restaurant_id}, err: ${err}`)
+    });
+  });
+}
