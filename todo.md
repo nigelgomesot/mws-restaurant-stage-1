@@ -63,6 +63,7 @@ https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 		add to restaurants db
 		add to offline favorites
 		register event tag
+		listen to event tag
 
 		fetch PUT request via background sync
 

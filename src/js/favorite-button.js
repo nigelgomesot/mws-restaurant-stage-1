@@ -66,6 +66,16 @@ function handleWithBackgroundSync() {
 
 		return updatedRestaurant;
 	}).then(updatedRestaurant => {
+		console.log(`register offline favorite sync, restaurant_id: ${updatedRestaurant.id}`);
+
+		navigator.serviceWorker.ready.then(function(reg) {
+			return reg.sync.register('syncOfflineFavorites');
+		}).catch(function() {
+			console.error(`unable to register offline favorite sync, restaurant_id: ${updatedRestaurant.id}`);
+		});
+
+		return updatedRestaurant;
+	}).then(updatedRestaurant => {
 		console.log(`updating view page, restaurant_id: ${updatedRestaurant.id}`);
 
 		setIsFavValue.call(this, updatedRestaurant.is_favorite);

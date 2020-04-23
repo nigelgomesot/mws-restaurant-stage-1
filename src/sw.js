@@ -73,3 +73,13 @@ function serveImage(request) {
 		});
 	});
 }
+
+self.addEventListener('sync', function(event) {
+	if (event.tag === 'syncOfflineFavorites') {
+		event.waitUntil(syncOfflineFavorites());
+	}
+});
+
+function syncOfflineFavorites() {
+	console.log('syncOfflineFavorites started');
+}
