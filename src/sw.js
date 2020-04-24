@@ -1,3 +1,5 @@
+import { openDB } from 'idb';
+
 const appName = 'restaurant-reviews';
 const staticCacheName = appName + '-v1.0';
 const contentImgCache = appName + '-images';
@@ -82,4 +84,41 @@ self.addEventListener('sync', function(event) {
 
 function syncOfflineFavorites() {
 	console.log('syncOfflineFavorites started');
+
+	// read from offline favorties db
+	// put request to server
+
+	return db().then(db => {
+		const store = db.transaction('offline-favorites').objectStore('offline-favorites');
+
+		return store.getAll().then(records => {
+				console.log('records');
+				console.log(records);
+		});
+	});
+}
+
+export function db() {
+	return openDB('restaurant-reviews', 3, {
+    upgrade(db, oldVersion, newVersion, transaction) {
+      let store;
+
+      switch(oldVersion) {
+        case 0:
+          db.createObjectStore('restaurants', {
+            keyPath: 'id'
+          });
+        case 1:
+          db.createObjectStore('reviews', {
+            keyPath: 'id'
+          }).createIndex(
+            'restaurant_id', 'restaurant_id'
+          );
+        case 2:
+          db.createObjectStore('offline-favorites', {
+            keyPath: 'restaurant_id'
+          });
+      }
+    }
+  });
 }
