@@ -67,6 +67,7 @@ https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 		read from offline-favorites in sw
 
 		fetch PUT request in sw
+			Fix: Uncaught (in promise) DOMException: Failed to execute 'get' on 'IDBObjectStore
 
 uncomment SW (main.js, restaurant_info.js)
 Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.

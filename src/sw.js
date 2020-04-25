@@ -88,37 +88,40 @@ function syncOfflineFavorites() {
 	// read from offline favorties db
 	// put request to server
 
-	return db().then(db => {
-		const store = db.transaction('offline-favorites').objectStore('offline-favorites');
+	return openDB('restaurant-reviews').then(db => {
+		console.log('get offlineFavorites from idb');
 
-		return store.getAll().then(records => {
-				console.log('records');
-				console.log(records);
+		const offlineFavoritesTxn = db.transaction('offline-favorites').objectStore('offline-favorites');
+	    const restaurantsTxn = db.transaction('restaurants', 'readwrite').objectStore('restaurants');
+
+		offlineFavoritesTxn.getAll().then(offlineFavorites => {
+
+			Promise.all(offlineFavorites.map(offlineFavorite => {
+				const restaurantId = offlineFavorite.restaurant_id;
+				const isFav = offlineFavorite.is_favorite;
+				const url = `http://localhost:1337/restaurants/${restaurantId}/?is_favorite=${isFav}`;
+				const PUT = { method: 'PUT' };
+
+				console.log(`put offlineFavorite to server restaurantId: ${restaurantId}`);
+				return fetch(url, PUT).then(response => {
+					if (!response.ok) return Promise.reject('unable to update favorite status.');
+
+					return response.json();
+				}).then(networkRestuarant => {
+					console.log(`update restaurants restaurantId: ${restaurantId}`);
+
+					return restaurantsTxn.get(networkRestuarant.id).then(idbRestaurant => {
+        				restaurantsTxn.put(networkRestuarant);
+        			});
+				}).then(() => {
+					console.log(`TODO: delete offlineFavorite restaurantId: ${restaurantId}`);
+				});
+			}));
+		}).then(() => {
+			return restaurantsTxn.complete;
+		}).then(() => {
+			return offlineFavoritesTxn.complete;
 		});
 	});
 }
 
-export function db() {
-	return openDB('restaurant-reviews', 3, {
-    upgrade(db, oldVersion, newVersion, transaction) {
-      let store;
-
-      switch(oldVersion) {
-        case 0:
-          db.createObjectStore('restaurants', {
-            keyPath: 'id'
-          });
-        case 1:
-          db.createObjectStore('reviews', {
-            keyPath: 'id'
-          }).createIndex(
-            'restaurant_id', 'restaurant_id'
-          );
-        case 2:
-          db.createObjectStore('offline-favorites', {
-            keyPath: 'restaurant_id'
-          });
-      }
-    }
-  });
-}
