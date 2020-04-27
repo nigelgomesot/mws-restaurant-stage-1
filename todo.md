@@ -65,9 +65,9 @@ https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 		register event tag
 		listen to event tag
 		read from offline-favorites in sw
-
 		fetch PUT request in sw
 			Fix: Uncaught (in promise) DOMException: Failed to execute 'get' on 'IDBObjectStore
+	- sync reviews
 
 uncomment SW (main.js, restaurant_info.js)
 Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.

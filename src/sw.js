@@ -92,7 +92,6 @@ function syncOfflineFavorites() {
 		console.log('get offlineFavorites from idb');
 
 		const offlineFavoritesTxn = db.transaction('offline-favorites').objectStore('offline-favorites');
-	    const restaurantsTxn = db.transaction('restaurants', 'readwrite').objectStore('restaurants');
 
 		offlineFavoritesTxn.getAll().then(offlineFavorites => {
 
@@ -109,19 +108,25 @@ function syncOfflineFavorites() {
 					return response.json();
 				}).then(networkRestuarant => {
 					console.log(`update restaurants restaurantId: ${restaurantId}`);
+					const restaurantsTxn = db.transaction('restaurants', 'readwrite').objectStore('restaurants');
 
 					return restaurantsTxn.get(networkRestuarant.id).then(idbRestaurant => {
         				restaurantsTxn.put(networkRestuarant);
-        			});
+        			}).then(() => {
+						return restaurantsTxn.complete;
+					});
 				}).then(() => {
-					console.log(`TODO: delete offlineFavorite restaurantId: ${restaurantId}`);
+					console.log(`delete offlineFavorite restaurantId: ${restaurantId}`);
+
+					const offlineFavoritesUpdateTxn = db.transaction('offline-favorites', 'readwrite').objectStore('offline-favorites');
+
+					offlineFavoritesUpdateTxn.delete(restaurantId).then(() => {
+						return offlineFavoritesUpdateTxn.complete;
+					})
 				});
 			}));
-		}).then(() => {
-			return restaurantsTxn.complete;
 		}).then(() => {
 			return offlineFavoritesTxn.complete;
 		});
 	});
 }
-
