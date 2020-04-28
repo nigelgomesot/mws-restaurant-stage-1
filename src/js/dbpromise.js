@@ -3,7 +3,7 @@
 import { openDB } from 'idb';
 
 export function db() {
-	return openDB('restaurant-reviews', 3, {
+	return openDB('restaurant-reviews', 4, {
     upgrade(db, oldVersion, newVersion, transaction) {
       let store;
 
@@ -22,6 +22,12 @@ export function db() {
           db.createObjectStore('offline-favorites', {
             keyPath: 'restaurant_id'
           });
+        case 3:
+          db.createObjectStore('offline-reviews', {
+            autoIncrement: true
+          }).createIndex(
+            'restaurant_id', 'restaurant_id'
+          );
       }
     }
   });

@@ -89,6 +89,23 @@ function handleSubmit(e) {
 	});
 }
 
+function handleSubmit2(e) {
+	if ('serviceWorker' in navigator && 'SyncManager' in window) {
+		return handleSubmitWithBackgroundSync(e);
+	}
+
+	handleSubmit(e);
+}
+
+function handleSubmitWithBackgroundSync(e) {
+	console.log('handleSubmitWithBackgroundSync');
+
+	e.preventDefault();
+
+	// store new review in offline-reviews
+	// trigger backgroundSync
+}
+
 export default function reviewForm(restaurantId) {
 	const form = document.createElement('form');
 	form.id = 'review-form';
@@ -144,7 +161,7 @@ export default function reviewForm(restaurantId) {
 	p.appendChild(addButton);
 	form.appendChild(p);
 
-	form.onsubmit = handleSubmit;
+	form.onsubmit = handleSubmit2;
 
 	return form;
 };

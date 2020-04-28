@@ -68,6 +68,14 @@ https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 		fetch PUT request in sw
 			Fix: Uncaught (in promise) DOMException: Failed to execute 'get' on 'IDBObjectStore
 	- sync reviews
+		store review
+		trigger background sync
 
+		register event tag
+		listen to event tag
+		read from offline-reviews in sw
+		fetch POST request in sw
+
+		ensure during offline; user able to see review from both stores (reviews, offline-reviews)
 uncomment SW (main.js, restaurant_info.js)
 Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.
