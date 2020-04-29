@@ -70,6 +70,7 @@ https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 	- sync reviews
 		store review
 		trigger background sync
+		investigate duplicate reviews & offline reviews creation
 
 		register event tag
 		listen to event tag

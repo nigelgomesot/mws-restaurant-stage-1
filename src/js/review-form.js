@@ -104,6 +104,14 @@ function handleSubmitWithBackgroundSync(e) {
 
 	// store new review in offline-reviews
 	// trigger backgroundSync
+
+	const review = validateAndGetData();
+	if (!review) return;
+	console.log(review);
+
+	DBPromise.putOfflineReview(review).then(() => {
+		console.log('put complete');
+	});
 }
 
 export default function reviewForm(restaurantId) {

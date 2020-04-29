@@ -101,3 +101,20 @@ export function putOfflineFavorite(restaurant_id, is_favorite) {
     });
   });
 }
+
+export function putOfflineReview(review) {
+  return db().then(db => {
+    const offlineReviewTxn = db.transaction('offline-reviews', 'readwrite').objectStore('offline-reviews');
+
+    const offlineReview = {
+      restaurant_id: review.restaurant_id,
+      review: review
+    };
+
+    offlineReviewTxn.put(offlineReview).then(() => {
+      return offlineReviewTxn.complete;
+    }).catch(err => {
+      console.error(`putOfflineReview failed: restaurant_id: ${review.restaurant_id}, err: ${err}`);
+    });
+  });
+}
