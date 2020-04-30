@@ -105,12 +105,26 @@ function handleSubmitWithBackgroundSync(e) {
 	// store new review in offline-reviews
 	// trigger backgroundSync
 
-	const review = validateAndGetData();
-	if (!review) return;
-	console.log(review);
+	const offlineReview = validateAndGetData();
+	if (!offlineReview) return;
 
-	DBPromise.putOfflineReview(review).then(() => {
-		console.log('put complete');
+	DBPromise.putOfflineReview(offlineReview).then(() => {
+		console.log(`register offline review sync, restaurant_id: ${offlineReview.restaurant_id}`);
+
+		navigator.serviceWorker.ready.then(function(reg) {
+			return reg.sync.register('syncOfflineReviews');
+		}).catch(function() {
+			console.error(`unable to register offline reviews sync, restaurant_id: ${offlineReview.restaurant_id}`);
+		});
+
+	}).then(() => {
+		console.log(`updating view page, restaurant_id: ${offlineReview.restaurant_id}`);
+
+		const reviewList = document.getElementById('reviews-list');
+		const newReview = createReviewHTML(offlineReview);
+		reviewList.appendChild(newReview);
+
+		clearForm();
 	});
 }
 

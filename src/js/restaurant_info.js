@@ -2,7 +2,7 @@ import * as DBHelper from './dbhelper';
 import SECRET from './secret';
 import favoriteButton from './favorite-button';
 import reviewForm from './review-form';
-//import * as RegisterSW from './register-sw';
+import * as RegisterSW from './register-sw';
 
 let restaurant;
 var newMap;

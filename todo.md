@@ -71,8 +71,8 @@ https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 		store review
 		trigger background sync
 		investigate duplicate reviews & offline reviews creation
-
 		register event tag
+
 		listen to event tag
 		read from offline-reviews in sw
 		fetch POST request in sw
