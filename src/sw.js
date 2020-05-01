@@ -77,9 +77,15 @@ function serveImage(request) {
 }
 
 self.addEventListener('sync', function(event) {
-	if (event.tag === 'syncOfflineFavorites') {
-		event.waitUntil(syncOfflineFavorites());
+	switch(event.tag) {
+		case 'syncOfflineFavorites':
+			event.waitUntil(syncOfflineFavorites());
+			break;
+		case 'syncOfflineReviews':
+			event.waitUntil(syncOfflineReviews());
+			break;
 	}
+
 });
 
 function syncOfflineFavorites() {
@@ -127,6 +133,28 @@ function syncOfflineFavorites() {
 			}));
 		}).then(() => {
 			return offlineFavoritesTxn.complete;
+		});
+	});
+}
+
+function syncOfflineReviews() {
+	console.log('syncOfflineReviews started');
+
+	// fetch all reviews
+	// POSt to reviews
+	// delete from offline-reviews
+
+	return openDB('restaurant-reviews').then(db => {
+		console.log('get offlineReviews from idb');
+
+		const offlineReviewsTxn = db.transaction('offline-reviews').objectStore('offline-reviews');
+
+		offlineReviewsTxn.getAll().then(offlineReviews => {
+			return Promise.all(offlineReviews.map(offlineReview => {
+				console.log(offlineReview);
+			}));
+		}).then(() => {
+			return offlineReviewsTxn.complete;
 		});
 	});
 }
