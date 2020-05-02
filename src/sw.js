@@ -151,7 +151,30 @@ function syncOfflineReviews() {
 
 		offlineReviewsTxn.getAll().then(offlineReviews => {
 			return Promise.all(offlineReviews.map(offlineReview => {
-				console.log(offlineReview);
+				console.log(`post offlineReview to server restaurantId: ${offlineReview.restaurant_id}`);
+
+				const review = offlineReview.review;
+				const url = `http://localhost:1337/reviews`;
+				const POST = {
+					method: 'POST',
+					body: JSON.stringify(review)
+				};
+
+				return fetch(url, POST).then(response => {
+					if (!response.ok) return Promise.reject('post review failed.');
+
+					return response.json();
+				}).then(newNetworkReview => {
+					console.log(`add review restaurantId: ${newNetworkReview.restaurant_id}`);
+
+					const reviewsTxn = db.transaction('reviews', 'readwrite').objectStore('reviews');
+
+					reviewsTxn.put(newNetworkReview).then(function () {
+						return reviewsTxn.complete;
+					});
+
+				});
+				// TODO: delete offline Review
 			}));
 		}).then(() => {
 			return offlineReviewsTxn.complete;

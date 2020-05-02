@@ -74,11 +74,11 @@ https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 		register event tag
 		listen to event tag
 		fetch all reviews
-
 		POST to reviews
+		add in reviews
+
 		delete from offline-reviews
 		read from offline-reviews in sw
-		fetch POST request in sw
 
 		ensure during offline; user able to see review from both stores (reviews, offline-reviews)
 uncomment SW (main.js, restaurant_info.js)
