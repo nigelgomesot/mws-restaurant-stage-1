@@ -169,15 +169,21 @@ function syncOfflineReviews() {
 
 					const reviewsTxn = db.transaction('reviews', 'readwrite').objectStore('reviews');
 
-					reviewsTxn.put(newNetworkReview).then(function () {
+					reviewsTxn.put(newNetworkReview).then(() => {
 						return reviewsTxn.complete;
 					});
+				}).then(() => {
+					console.log(`delete offlineReview key: ${offlineReview.id}`);
 
+					const deleteOfflineReviewTxn = db.transaction('offline-reviews', 'readwrite').objectStore('offline-reviews');
+
+					return deleteOfflineReviewTxn.delete(offlineReview.id).then(() => {
+						return deleteOfflineReviewTxn.complete;
+					});;
 				});
-				// TODO: delete offline Review
-			}));
-		}).then(() => {
-			return offlineReviewsTxn.complete;
+			})).then(() => {
+				return offlineReviewsTxn.complete;
+			});
 		});
 	});
 }

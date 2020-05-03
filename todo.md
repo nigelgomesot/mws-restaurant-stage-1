@@ -76,10 +76,8 @@ https://alexandroperez.github.io/mws-walkthrough/?3.5.the-ultimate-challenge
 		fetch all reviews
 		POST to reviews
 		add in reviews
-
 		delete from offline-reviews
-		read from offline-reviews in sw
 
-		ensure during offline; user able to see review from both stores (reviews, offline-reviews)
-uncomment SW (main.js, restaurant_info.js)
-Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.
+		PENDING
+		- ensure during offline; user able to see review from both stores (reviews, offline-reviews)
+		- Misc: when reviews are not fetched from network, change error message from `No reviews yet` to `Unable to fetch reviews`.

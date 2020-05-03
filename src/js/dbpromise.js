@@ -24,6 +24,7 @@ export function db() {
           });
         case 3:
           db.createObjectStore('offline-reviews', {
+            keyPath: 'id',
             autoIncrement: true
           }).createIndex(
             'restaurant_id', 'restaurant_id'
